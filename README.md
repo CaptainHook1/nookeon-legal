@@ -16,7 +16,7 @@ genre de divergence qu'on ne remarque qu'au mauvais moment.
 
 ## Ce qui reste
 
-- ⚠️ **`contact@nookeon.fr` doit recevoir du courrier.** C'est l'adresse de
+- ⚠️ **`contact@nookeon.com` doit recevoir du courrier.** C'est l'adresse de
   contact RGPD de la page. Une adresse qui rebondit vaut moins que pas
   d'adresse du tout : le délai d'un mois court quand même.
 - Une phrase absente exprès, au chapitre du modèle d'IA — voir le commentaire
