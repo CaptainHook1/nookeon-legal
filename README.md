@@ -14,14 +14,17 @@ Toute modification se fait là-bas, puis se recopie ici. Corriger directement ce
 fichier créerait deux versions d'un document juridique, et c'est exactement le
 genre de divergence qu'on ne remarque qu'au mauvais moment.
 
-## Ce qui reste à remplir
+## Ce qui reste
 
-Trois blancs, surlignés dans la page pour qu'on ne puisse pas les manquer :
-`TON-NOM-COMPLET`, `TON-ADRESSE-POSTALE`, `CONTACT@TON-DOMAINE`. Le RGPD
-(art. 13) exige l'identité et le contact du responsable de traitement.
-
-Et une phrase absente exprès, au chapitre du modèle d'IA : voir le commentaire
-HTML à cet endroit.
+- ⚠️ **`contact@nookeon.fr` doit recevoir du courrier.** C'est l'adresse de
+  contact RGPD de la page. Une adresse qui rebondit vaut moins que pas
+  d'adresse du tout : le délai d'un mois court quand même.
+- Une phrase absente exprès, au chapitre du modèle d'IA — voir le commentaire
+  HTML à cet endroit. Elle attend que la facturation soit activée sur le projet
+  Google Cloud qui porte la clé Gemini.
+- Pas d'adresse postale, et c'est un choix : l'art. 13 du RGPD demande « les
+  coordonnées », qu'un e-mail satisfait. Elle redeviendra obligatoire pour les
+  MENTIONS LÉGALES (LCEN art. 6-III) le jour où l'app sera vendue — autre page.
 
 ## Le jour où le vrai domaine existe
 
