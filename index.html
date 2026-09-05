@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Confidentialité — Nookeon</title>
+    <meta
+      name="description"
+      content="Ce que Nookeon fait de tes données : ce qui reste sur ton téléphone, ce qui est sauvegardé, ce qui part au modèle d’IA, et ce que tu peux exiger."
+    />
+    <meta name="robots" content="index,follow" />
+    <!--
+      UNE PAGE, AUCUNE REQUÊTE SORTANTE — même règle que `site/index.html` :
+      polices du système, pas de script, pas de traceur, pas d'image. Une page
+      de confidentialité qui donne l'adresse IP de son lecteur à Google Fonts
+      se contredit avant sa première phrase.
+
+      ⚠️ TROIS BLANCS À REMPLIR AVANT DE PUBLIER, écrits pour qu'on ne puisse
+      pas les rater : TON-NOM-COMPLET, CONTACT@TON-DOMAINE et TON-ADRESSE-POSTALE.
+      Le RGPD (art. 13) exige l'identité et le contact du responsable de
+      traitement : sans eux, cette page ne vaut rien.
+
+      ⚠️ ET UNE PHRASE QUI MANQUE EXPRÈS, au chapitre du modèle d'IA : celle qui
+      dirait que Google ne se sert pas des contenus pour entraîner ses modèles.
+      Elle n'est vraie que sur l'offre PAYANTE de l'API Gemini, et la clé de
+      Nookeon appartient à un projet dont la facturation est désactivée. Le
+      commentaire posé là-bas donne la phrase à ajouter le jour où ce sera vrai.
+    -->
+    <style>
+      :root {
+        --ground: #f6f6f6;
+        --ink: #171817;
+        --muted: #6b6c6b;
+        --rule: rgba(23, 24, 23, 0.12);
+        --surface: #ffffff;
+        --accent: #154c5c;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          --ground: #141614;
+          --ink: #f6f6f6;
+          --muted: #a9aaa7;
+          --rule: rgba(246, 246, 246, 0.14);
+          --surface: #1c1e1d;
+          --accent: #5a9cae;
+          color-scheme: dark;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0 22px 96px;
+        background: var(--ground);
+        color: var(--ink);
+        font:
+          17px/1.62 -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      main {
+        max-width: 46rem;
+        margin: 0 auto;
+      }
+      header {
+        padding: 64px 0 28px;
+        border-bottom: 2px solid var(--ink);
+        margin-bottom: 34px;
+      }
+      .marque {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 26px;
+      }
+      /* Les trois barres, dessinées en CSS et jamais en image — mêmes
+         proportions que `assets/icon.png` : écart = 0,48 × hauteur,
+         rayon = 0,30 × hauteur. Plus lâche, la marque se lit comme un menu. */
+      .barres {
+        --bh: 7px;
+        display: grid;
+        gap: calc(var(--bh) * 0.48);
+      }
+      .barres i {
+        display: block;
+        width: calc(var(--bh) * 4.6);
+        height: var(--bh);
+        border-radius: calc(var(--bh) * 0.3);
+        background: var(--ink);
+      }
+      .marque span {
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+      h1 {
+        font-size: clamp(2rem, 6vw, 2.9rem);
+        line-height: 1.04;
+        letter-spacing: -0.03em;
+        margin: 0 0 14px;
+      }
+      .date {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 0;
+      }
+      h2 {
+        font-size: 1.28rem;
+        letter-spacing: -0.02em;
+        margin: 46px 0 12px;
+        padding-top: 22px;
+        border-top: 1px solid var(--rule);
+      }
+      h2:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+        margin-top: 34px;
+      }
+      h3 {
+        font-size: 1.02rem;
+        margin: 26px 0 8px;
+      }
+      p,
+      li {
+        margin: 0 0 14px;
+      }
+      ul {
+        padding-left: 1.15em;
+      }
+      li {
+        margin-bottom: 9px;
+      }
+      strong {
+        font-weight: 600;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 2px;
+      }
+      .resume {
+        background: var(--surface);
+        border-radius: 18px;
+        padding: 24px 26px;
+        margin: 0 0 8px;
+      }
+      .resume > :last-child {
+        margin-bottom: 0;
+      }
+      .resume h2 {
+        border: 0;
+        padding: 0;
+        margin: 0 0 12px;
+      }
+      .blanc {
+        background: rgba(140, 58, 47, 0.14);
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15.5px;
+        margin: 0 0 20px;
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 10px 14px 10px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      th {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .tableau {
+        overflow-x: auto;
+      }
+      footer {
+        margin-top: 56px;
+        padding-top: 22px;
+        border-top: 1px solid var(--rule);
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="marque">
+          <span class="barres" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Nookeon</span>
+        </div>
+        <h1>Politique de confidentialité</h1>
+        <p class="date">En vigueur au 5 septembre 2026.</p>
+      </header>
+
+      <div class="resume">
+        <h2>En deux phrases</h2>
+        <p>
+          Nookeon garde tes notes <strong>sur ton téléphone</strong> et les recopie dans
+          <strong>ton compte</strong> pour que tu les retrouves si tu changes d’appareil. Rien n’est
+          vendu, rien n’est partagé avec un annonceur, il n’y a aucune publicité et aucun
+          identifiant publicitaire.
+        </p>
+        <p>
+          Deux choses sortent de ce cadre et méritent d’être lues : ce que le
+          <strong>rangement automatique</strong> envoie au modèle d’intelligence artificielle, et la
+          <strong>mesure d’usage</strong>, que tu peux couper.
+        </p>
+      </div>
+
+      <h2>Qui est responsable</h2>
+      <p>
+        <span class="blanc">TON-NOM-COMPLET</span>, <span class="blanc">TON-ADRESSE-POSTALE</span>,
+        éditeur de l’application Nookeon. Pour toute question ou pour exercer tes droits :
+        <a href="mailto:CONTACT@TON-DOMAINE"><span class="blanc">CONTACT@TON-DOMAINE</span></a
+        >.
+      </p>
+
+      <h2>Ce qui ne quitte jamais ton téléphone</h2>
+      <ul>
+        <li>
+          <strong>L’espace « Mots de passe ».</strong> Ses entrées sont rangées dans le trousseau
+          sécurisé du système (Keychain sur iOS, Keystore sur Android), protégées par Face ID ou par
+          ton empreinte. Elles ne touchent jamais la base de l’app, ne sont jamais sauvegardées en
+          ligne, ne sont pas indexées par la recherche, et ne sont pas incluses dans les sauvegardes
+          chiffrées d’Apple ou de Google. Si tu perds ton téléphone, elles sont perdues.
+        </li>
+        <li>
+          <strong>Le texte lu dans tes images.</strong> La reconnaissance de texte se fait
+          entièrement sur l’appareil.
+        </li>
+        <li>
+          <strong>Ta voix, sur iPhone.</strong> La dictée utilise le moteur d’Apple, hors ligne. Sur
+          Android, elle utilise le moteur hors ligne de Google
+          <em>quand le français y est installé</em> ; sinon la transcription passe par les serveurs
+          de Google, et l’écran te le dit avant que tu parles.
+        </li>
+      </ul>
+
+      <h2>Ce qui est sauvegardé dans ton compte</h2>
+      <p>
+        Si tu crées un compte, Nookeon recopie tes données chez <strong>Google Firebase</strong>,
+        sur des serveurs situés en <strong>Belgique (europe-west1)</strong>. C’est ce qui te permet
+        de retrouver tes affaires sur un nouvel appareil.
+      </p>
+      <div class="tableau">
+        <table>
+          <thead>
+            <tr>
+              <th>Ce qui est copié</th>
+              <th>Pourquoi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tes notes : titre, texte, date d’échéance, épingle, espace</td>
+              <td>Les retrouver ailleurs</td>
+            </tr>
+            <tr>
+              <td>Tes photos jointes</td>
+              <td>Idem — 100 photos au maximum, 1 000 avec Nookeon Plus</td>
+            </tr>
+            <tr>
+              <td>Les personnes que tu as ajoutées, et ce que tu as écrit sur elles</td>
+              <td>Idem</td>
+            </tr>
+            <tr>
+              <td>Tes espaces, leur nom, leur icône et leur ordre</td>
+              <td>Idem</td>
+            </tr>
+            <tr>
+              <td>Ton réglage jour / nuit et l’icône d’app choisie</td>
+              <td>Que l’app se ressemble d’un appareil à l’autre</td>
+            </tr>
+            <tr>
+              <td>Ton adresse e-mail, ou l’identifiant Google / Apple</td>
+              <td>Te reconnaître à la connexion</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>Ton mot de passe n’est jamais connu de Nookeon</strong> : il est confié à Firebase
+        Authentication et ne transite jamais par nos propres traitements. Si tu te connectes avec
+        Google ou Apple, aucun mot de passe n’existe du tout.
+      </p>
+      <p>
+        La corbeille, elle, est <strong>locale</strong> : supprimer une note sur un téléphone ne
+        remplit pas la corbeille de l’autre.
+      </p>
+
+      <h2>Ce qui part au modèle d’intelligence artificielle</h2>
+      <p>
+        Le bouton « IA » du composeur range une note à ta place : il en devine le titre, l’espace,
+        la date, les personnes concernées. Ce travail est fait par <strong>Gemini</strong>, un
+        modèle de Google, appelé depuis nos serveurs — <strong>jamais depuis ton téléphone</strong>.
+      </p>
+      <p>Ce qui est envoyé, et rien d’autre :</p>
+      <ul>
+        <li>
+          <strong>le texte de la note</strong> que tu viens d’écrire ou de dicter, et le texte que
+          l’appareil a su lire dans les photos jointes ;
+        </li>
+        <li>
+          <strong>la liste de tes espaces et des personnes de ton carnet</strong>, pour que le
+          modèle puisse choisir parmi eux plutôt que d’en inventer ;
+        </li>
+        <li>
+          <strong>une image, et seulement dans un cas précis</strong> : la photo doit avoir été
+          prise <em>dans</em> Nookeon (jamais une image venue de ta photothèque ou d’un partage, là
+          où vivent les captures d’écran de messages et d’applications bancaires),
+          <em>et</em> l’appareil ne doit y avoir lu aucun texte. Ce qui part est alors une vignette
+          de 768 pixels, pas la photo d’origine.
+        </li>
+      </ul>
+      <p>
+        Cette image <strong>n’est écrite nulle part</strong> : ni dans une base, ni dans un fichier,
+        ni dans un journal. Elle est relayée au modèle dans la même requête, et disparaît avec elle.
+      </p>
+      <p>
+        Une fois traité par le modèle, ce contenu
+        <strong>n’est conservé par Nookeon nulle part</strong> : seule la note rangée, chez toi,
+        garde une trace de ce que le modèle a proposé. Google le traite en tant que sous-traitant,
+        selon les conditions de l’API Gemini.
+      </p>
+      <!-- ⚠️ CE QUI MANQUE ICI, ET POURQUOI IL N'Y EST PAS (2026-09-05).
+           La phrase qu'on veut écrire — « Google ne se sert pas de ces contenus
+           pour entraîner ses modèles » — n'est vraie que sur l'offre PAYANTE de
+           l'API Gemini. La clé de Nookeon appartient à un projet Google Cloud
+           dont la FACTURATION EST DÉSACTIVÉE, donc au palier gratuit, dont les
+           conditions autorisent expressément l'inverse.
+           L'écrire aujourd'hui serait une déclaration fausse dans un document
+           juridique, alors on ne l'écrit pas : le paragraphe ci-dessus dit ce
+           qui est vrai, et rien de plus.
+           Dès que la facturation est activée (~9 c€/mois au volume actuel),
+           ajouter ici :
+             <p>Nookeon utilise l'offre payante de l'API Gemini :
+             <strong>Google ne se sert pas de ces contenus pour entraîner ses
+             modèles.</strong></p>
+           C'est le seul endroit du site où une phrase attend un réglage. -->
+      <p>
+        Le rangement automatique est <strong>facultatif</strong>. Écrire une note à la main, choisir
+        son espace et sa date n’envoie rien à personne.
+      </p>
+
+      <h2>La mesure d’usage</h2>
+      <p>
+        Pour savoir ce qui sert et ce qui ne sert pas, Nookeon compte des gestes : une note
+        enregistrée, un écran ouvert, une recherche lancée, un rangement réussi ou raté.
+      </p>
+      <p>
+        <strong>Le contenu n’en fait jamais partie.</strong> Aucun titre, aucun texte, aucun nom,
+        aucune adresse : les événements ne peuvent porter que des nombres, des booléens et des
+        valeurs choisies dans une liste fermée — c’est une contrainte du code, pas une promesse. Les
+        noms d’écrans sont normalisés, donc aucun identifiant de note n’y figure.
+      </p>
+      <p>
+        Ces mesures vont chez <strong>PostHog</strong>, sur ses serveurs de l’Union européenne. Il
+        n’y a
+        <strong
+          >aucun identifiant publicitaire, aucun suivi d’une application à l’autre, aucune publicité
+          et aucune revente</strong
+        >
+        — ce qui est la raison pour laquelle Nookeon n’affiche pas la demande de suivi d’iOS : il
+        n’y a rien à suivre.
+      </p>
+      <p>
+        Cette mesure repose sur notre intérêt légitime à améliorer l’application, et
+        <strong>tu peux la couper</strong> : Réglages → Confidentialité → « Statistiques partagées
+        ». La couper n’arrête pas seulement les envois, ça efface aussi ce qui restait en attente
+        sur l’appareil.
+      </p>
+
+      <h2>L’abonnement</h2>
+      <p>
+        Nookeon Plus passe par l’App Store ou Google Play, via <strong>RevenueCat</strong>, qui nous
+        dit si un compte est abonné. <strong>Aucune donnée de paiement ne touche Nookeon</strong> :
+        ni numéro de carte, ni adresse de facturation. Ce que nous conservons se résume à « ce
+        compte est abonné, jusqu’à telle date ».
+      </p>
+
+      <h2>Les autorisations, et le moment où elles sont demandées</h2>
+      <p>
+        Aucune autorisation n’est demandée au démarrage. Chacune l’est au moment où elle sert,
+        c’est-à-dire au moment où la question se répond d’elle-même.
+      </p>
+      <ul>
+        <li>
+          <strong>Contacts</strong> — Nookeon n’ouvre jamais ton carnet d’adresses. Il passe par le
+          sélecteur du système, qui te rend <em>une</em> personne, celle que tu as désignée. Aucune
+          importation en masse n’est possible.
+        </li>
+        <li>
+          <strong>Calendrier</strong> — Nookeon crée son propre calendrier « Nookeon » et n’écrit
+          que dedans. Il ne lit aucun de tes autres agendas.
+        </li>
+        <li><strong>Appareil photo et photothèque</strong> — pour joindre une image à une note.</li>
+        <li><strong>Micro</strong> — pour la dictée.</li>
+        <li>
+          <strong>Notifications</strong> — pour les rappels d’échéance que tu as toi-même posés. Si
+          tu les acceptes, un jeton propre à cette installation est enregistré dans ton compte ;
+          couper l’interrupteur des notifications l’efface.
+        </li>
+      </ul>
+
+      <h2>Les liens que tu partages</h2>
+      <p>
+        Quand tu partages une adresse web à Nookeon, l’application va chercher le titre, la
+        description et l’image de la page pour en faire une vraie fiche. Cette requête part vers
+        <strong>le site que tu as partagé, et lui seul</strong>. C’est le seul endroit de Nookeon où
+        une adresse choisie par quelqu’un d’autre décide de ce que ton téléphone contacte ; les
+        adresses privées de ton réseau local en sont exclues.
+      </p>
+
+      <h2>Combien de temps</h2>
+      <ul>
+        <li>
+          <strong>Tes notes restent tant que tu les gardes.</strong> Nookeon ne supprime rien tout
+          seul.
+        </li>
+        <li>
+          <strong>La corbeille garde 7 jours au minimum</strong>, sur l’appareil. Passé ce délai, la
+          note et ses images sont effacées pour de bon.
+        </li>
+        <li>
+          <strong>Effacer une note efface aussi ses photos</strong> sur nos serveurs, pas seulement
+          sa fiche.
+        </li>
+        <li>
+          <strong>Supprimer ton compte</strong> (Réglages, tout en bas) efface le compte et les
+          données associées. C’est définitif.
+        </li>
+        <li>Les mesures d’usage sont conservées <strong>13 mois</strong> au maximum.</li>
+      </ul>
+
+      <h2>Tes droits</h2>
+      <p>
+        Tu peux demander l’accès à tes données, leur correction, leur effacement, leur portabilité
+        dans un format lisible, la limitation de leur traitement, et t’opposer à la mesure d’usage.
+        Écris à
+        <a href="mailto:CONTACT@TON-DOMAINE"><span class="blanc">CONTACT@TON-DOMAINE</span></a> :
+        réponse sous un mois.
+      </p>
+      <p>
+        L’effacement se fait aussi tout seul depuis l’app. L’export complet de tes données n’a pas
+        encore de bouton : demande-le par e-mail, il te sera envoyé dans le même délai.
+      </p>
+      <p>
+        Si une réponse ne te satisfait pas, tu peux saisir la
+        <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a>.
+      </p>
+
+      <h2>Qui d’autre voit quelque chose</h2>
+      <div class="tableau">
+        <table>
+          <thead>
+            <tr>
+              <th>Prestataire</th>
+              <th>Ce qu’il traite</th>
+              <th>Où</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google (Firebase)</td>
+              <td>Compte, notes sauvegardées, photos</td>
+              <td>Belgique</td>
+            </tr>
+            <tr>
+              <td>Google (Gemini)</td>
+              <td>Le contenu envoyé au rangement automatique, sans conservation</td>
+              <td>Union européenne</td>
+            </tr>
+            <tr>
+              <td>PostHog</td>
+              <td>Mesure d’usage, sans contenu</td>
+              <td>Union européenne</td>
+            </tr>
+            <tr>
+              <td>RevenueCat</td>
+              <td>État de l’abonnement</td>
+              <td>États-Unis, clauses contractuelles types</td>
+            </tr>
+            <tr>
+              <td>Apple / Google</td>
+              <td>Le paiement, dont nous ne voyons rien</td>
+              <td>Selon leurs conditions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Pendant la bêta</h2>
+      <p>
+        Nookeon est distribué en test via <strong>TestFlight</strong>. Apple communique aux éditeurs
+        l’adresse e-mail des testeurs, l’appareil utilisé et les rapports de plantage. Si tu envoies
+        un retour depuis TestFlight, il nous parvient avec une capture d’écran que tu as choisie et
+        l’état de ton appareil.
+      </p>
+
+      <h2>Mineurs</h2>
+      <p>
+        Nookeon n’est pas destiné aux moins de 15 ans et ne leur demande rien. Si tu penses qu’un
+        compte a été créé par un enfant, écris-nous et il sera supprimé.
+      </p>
+
+      <h2>Changements</h2>
+      <p>
+        Toute modification est publiée sur cette page avec une nouvelle date d’entrée en vigueur. Un
+        changement qui élargirait ce qui est collecté serait annoncé dans l’application avant de
+        s’appliquer.
+      </p>
+
+      <footer>
+        <p>
+          Nookeon — <span class="blanc">TON-NOM-COMPLET</span>. Dernière mise à jour : 5 septembre
+          2026.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
